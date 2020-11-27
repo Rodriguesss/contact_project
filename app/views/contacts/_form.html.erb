@@ -1,0 +1,42 @@
+<div class="basic-grey">
+<%= form_with(model: contact, local: true) do |form| %>
+  <% if contact.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(contact.errors.count, "error") %> prohibited this contact from being saved:</h2>
+
+      <ul>
+      <% contact.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <h1 class="h1-edit">Contatos</h1>
+
+  <div class="field">
+    <%= form.label :nome %>
+    <%= form.text_field :name, placeholder: "Insira seu nome" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.text_field :email, placeholder: "Insira seu email"%>
+  </div>
+
+  <div class="field">
+    <%= form.label :tipo %>
+    <%= collection_select(:contact, :kind_id, @kind_options_for_select, :id, :description) %>
+  </div>
+
+  <div class="field">
+    <%= form.label :mensagem %>
+    <%= form.text_area :rmk %>
+  </div>
+
+  <div class="field flex-buttons">
+    <%= form.submit "Salvar", class: "button-submit" %>
+    <%= link_to 'Voltar', contacts_path, class: "button" %>
+  </div>
+<% end %>
+</div>

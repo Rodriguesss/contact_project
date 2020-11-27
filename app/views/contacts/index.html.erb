@@ -1,0 +1,33 @@
+<div class="basic-grey">
+  <h1>Contatos</h1>
+
+  <%= link_to 'NOVO CONTATO', new_contact_path, :class => "btn btn-show btn-new-contact" %>
+
+  <table class="table-grey">
+    <thead>
+      <tr>
+        <th class="col-titles">Nome</th>
+        <th class="col-titles">Email</th>
+        <th class="col-titles">Tipo</th>
+        <th class="col-titles">Observação</th>
+        <th class="col-titles" colspan="3">Ação</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @contacts.each do |contact| %>
+        <tr class="col-grey">
+          <td class="col-item"><%= validate_name(contact.name) %></td>
+          <td class="col-item"><%= contact.email %></td>
+          <td class="col-item"><%= contact.kind.description %></td>
+          <td class="col-item"><%= validate_rmk(contact.rmk) %></td>
+          <td class="col-item"><%= link_to 'Ver', contact, :class => "btn btn-show" %></td>
+          <td class="col-item"><%= link_to 'Editar', edit_contact_path(contact), :class => "btn btn-edit" %></td>
+          <td class="col-item"><%= link_to 'Deletar', contact, method: :delete, data: { confirm: 'Deseja realmente deletar?' }, :class => "btn btn-destroy" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+</div>

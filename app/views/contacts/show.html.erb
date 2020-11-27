@@ -1,0 +1,32 @@
+<div class="basic-grey">
+    <h1>Contatos</h1>
+
+  <div class="background-title">
+    <h2 class="title-item">
+      <strong ><%= @contact.name %></strong>
+    </h2>
+
+    <div class="background-item">
+      <p>
+        <strong>Email:</strong>
+        <%= @contact.email %>
+      </p>
+
+      <p>
+        <strong>Tipo:</strong>
+        <%= @contact.kind.description %>
+      </p>
+
+      <p>
+        <strong>Observação:</strong>
+        <%= @contact.rmk %>
+      </p>
+    <div>
+  </div>
+
+    <div class="field flex-buttons">
+      <%= link_to 'Editar', edit_contact_path(@contact), class: "btn btn-edit" %>
+      <%= link_to 'Voltar', contacts_path, class: "btn btn-destroy" %>
+    </div>
+
+</div>
